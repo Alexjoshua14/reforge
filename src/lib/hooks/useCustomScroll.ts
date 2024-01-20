@@ -4,7 +4,6 @@ import { throttle } from "../utils"
 
 export const useCustomScroll = (containerRef: RefObject<HTMLElement>) => {
   const [currentSection, setCurrentSection] = useState(0)
-  const sectionCount = 5
 
 
   /** Scroll to current section */
@@ -37,7 +36,7 @@ export const useCustomScroll = (containerRef: RefObject<HTMLElement>) => {
       } else if (e.deltaY < 0) {
         dir = -1
       }
-      setCurrentSection(prev => Math.max(Math.min(prev + dir, sectionCount - 1), 0))
+      setCurrentSection(prev => Math.max(Math.min(prev + dir, length - 1), 0))
     }, 2000)
 
     const handleScroll = (e: WheelEvent) => {
