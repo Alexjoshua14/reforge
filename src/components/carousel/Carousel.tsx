@@ -3,9 +3,12 @@
 import { FC, HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
 import FullScreenSection from '../FullScreenSection'
 import { motion } from 'framer-motion'
+import { scrollDelay, zoomDuration } from '@/lib/constants/CarouselConstants'
 
 /**
  * Places each child in a full screen section
+ * 
+ * TODO: Change scroll to transform
  */
 interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
   // children: Iterable<React.ReactNode>
@@ -41,7 +44,7 @@ const Carousel: FC<CarouselProps> = ({ children }) => {
         top: (currentSection * container.clientHeight),
         behavior: "smooth",
       })
-    }, 400)
+    }, scrollDelay)
   }, [currentSection])
 
   /** Intercept scroll events */
@@ -86,7 +89,7 @@ const Carousel: FC<CarouselProps> = ({ children }) => {
     <div
       ref={containerRef}
       className="h-screen w-screen overflow-scroll">
-      <div className="z-50 fixed top-1/2 -translate-y-1/2 right-10 flex flex-col gap-4 ">
+      <div className="z-50 fixed top-1/2 -translate-y-1/2 right-10 flex flex-col gap-4 text-primary">
         {Array.from({ length: childArray.length }).map((_, i) => (
           <button className="w-5 h-5" key={`nav-${i}`} onClick={() => setCurrentSection(i)}>
             {i}

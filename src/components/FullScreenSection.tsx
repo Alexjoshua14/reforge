@@ -1,6 +1,8 @@
 import { cn } from '@/lib/utils'
 import React, { FC, HTMLAttributes, useRef } from 'react'
 import { MotionProps, motion, useInView } from 'framer-motion'
+import { zoomDuration } from '@/lib/constants/CarouselConstants'
+import { SectionVariants } from '@/lib/variants/SectionVariants'
 
 interface FullScreenSectionProps extends HTMLAttributes<HTMLDivElement> {
   curr: boolean
@@ -16,11 +18,11 @@ const FullScreenSection = React.forwardRef<HTMLDivElement, FullScreenSectionProp
         className={
           cn(`relative w-screen h-screen flex items-center justify-center`,
             className)}
-
         ref={sectionRef}
-
-        animate={{ padding: curr && isInView ? 0 : [80, 40] }}
-        transition={{ duration: .4 }}
+        variants={SectionVariants}
+        // animate={{ padding: curr && isInView ? [0, 0] : [80, 40] }}
+        animate={curr && isInView ? 'active' : 'inactive'}
+        transition={{ duration: zoomDuration / 1000, ease: 'easeIn' }}
       >
         {children}
       </motion.div>
