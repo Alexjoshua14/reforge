@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { heroAdjectives, heroNouns } from '@/lib/data/heroPhrases'
 import useClient from '@/lib/hooks/useClient'
+import EyeThree from '../eye/EyeThree'
 
 interface HeroProps {
 
@@ -76,15 +77,7 @@ const Hero: FC<HeroProps> = ({ }) => {
         }
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex">
-        <div className="w-96 h-96 rounded-full bg-zinc-500 flex items-center justify-center">
-          <div className="w-11/12 aspect-square rounded-full bg-black/80 flex items-center justify-center">
-            <div className="w-3/4 aspect-square rounded-full bg-white/80 flex items-center justify-center">
-              <div className="w-1/2 aspect-square rounded-full bg-black/90">
-
-              </div>
-            </div>
-          </div>
-        </div>
+        <EyeThree />
 
       </div>
     </section>
