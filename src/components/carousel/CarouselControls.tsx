@@ -1,3 +1,4 @@
+import { scrollDelay } from '@/lib/constants/CarouselConstants'
 import { CarouselNavVariants, CarouselNavDotVariants } from '@/lib/variants/CarouselVariants'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
@@ -21,13 +22,13 @@ const CarouselControls: FC<CarouselControlsProps> = ({ length, currentSection, s
             className="w-4 h-auto aspect-square rounded-full grid place-content-center"
             variants={CarouselNavVariants}
             animate={currentSection === i ? 'active' : 'inactive'}
-            transition={{ duration: 1.4, ease: 'easeIn' }}
+            transition={{ duration: 1.4, ease: 'easeIn', delay: scrollDelay / 1000 }}
           >
             <motion.div
               className="w-1 h-auto aspect-square rounded-full"
               variants={CarouselNavDotVariants}
               animate={currentSection === i ? 'active' : 'inactive'}
-              transition={{ duration: 1.4, ease: 'easeIn' }}
+              transition={{ duration: 1.4, ease: 'easeIn', delay: scrollDelay / 1000 }}
             />
           </motion.div>
         </button>
