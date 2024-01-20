@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { scrollDelay, zoomDuration } from '@/lib/constants/CarouselConstants'
 import { CarouselNavDotVariants, CarouselNavVariants } from '@/lib/variants/CarouselVariants'
 import CarouselControls from './CarouselControls'
+import { throttle } from '@/lib/utils'
 
 /**
  * Places each child in a full screen section
@@ -14,16 +15,6 @@ import CarouselControls from './CarouselControls'
  */
 interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
   // children: Iterable<React.ReactNode>
-}
-
-const throttle = (fn: Function, delay: number) => {
-  let last = 0
-  return (...args: any[]) => {
-    const now = new Date().getTime()
-    if (now - last < delay) return
-    last = now
-    return fn(...args)
-  }
 }
 
 const Carousel: FC<CarouselProps> = ({ children }) => {
