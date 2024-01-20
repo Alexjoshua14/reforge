@@ -38,7 +38,7 @@ const TextSection: FC<TextSectionProps> = ({ title, text, }) => {
           className="text-[400px] tracking-tighter whitespace-nowrap font-bold text-white"
           initial={{ textShadow: '0px 0px 0px rgba(0,0,0,0.075)' }}
           whileInView={{ textShadow: '0px 0px 80px rgba(0,0,0,0.075)' }}
-          transition={{ duration: 1.4, delay: 1 }}
+          transition={{ duration: 2.8, delay: 1 }}
           viewport={{ amount: 'all' }}
         >
           {title.toLowerCase()}

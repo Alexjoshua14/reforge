@@ -14,9 +14,10 @@ const FullScreenSection = React.forwardRef<HTMLDivElement, FullScreenSectionProp
     const isInView = useInView(sectionRef, { amount: 'all' })
 
     return (
+
       <motion.div
         className={
-          cn(`relative w-screen h-screen flex items-center justify-center`,
+          cn(`relative w-screen h-screen flex items-center justify-center overflow-hidden`,
             className)}
         ref={sectionRef}
         variants={SectionVariants}
@@ -24,8 +25,11 @@ const FullScreenSection = React.forwardRef<HTMLDivElement, FullScreenSectionProp
         animate={curr && isInView ? 'active' : 'inactive'}
         transition={{ duration: zoomDuration / 1000, ease: 'easeIn' }}
       >
+
         {children}
+
       </motion.div>
+
     )
   }
 )
