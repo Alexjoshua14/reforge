@@ -19,16 +19,20 @@ interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Carousel: FC<CarouselProps> = ({ children }) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  const { currentSection, setCurrentSection } = useCustomScroll(containerRef)
-
 
   /** Grab children componets as an array */
+  let childArray: React.ReactNode[]
   if (children === undefined || children === null || typeof children === 'boolean')
-    return null
+    childArray = []
+  else
+    childArray = Array.isArray(children) ? children : [children]
 
-  const childArray = Array.isArray(children) ? children : [children]
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const { currentSection, setCurrentSection } = useCustomScroll(containerRef, childArray.length)
+
+
+
 
   return (
     <div

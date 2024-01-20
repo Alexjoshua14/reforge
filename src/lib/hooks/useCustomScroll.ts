@@ -1,8 +1,8 @@
 import { RefObject, useState, useEffect } from "react"
-import { scrollDelay } from "../constants/CarouselConstants"
+import { scrollDelay, scrollThrottleDuration } from "../constants/CarouselConstants"
 import { throttle } from "../utils"
 
-export const useCustomScroll = (containerRef: RefObject<HTMLElement>) => {
+export const useCustomScroll = (containerRef: RefObject<HTMLElement>, itemCount: number) => {
   const [currentSection, setCurrentSection] = useState(0)
 
 
@@ -36,8 +36,8 @@ export const useCustomScroll = (containerRef: RefObject<HTMLElement>) => {
       } else if (e.deltaY < 0) {
         dir = -1
       }
-      setCurrentSection(prev => Math.max(Math.min(prev + dir, length - 1), 0))
-    }, 2000)
+      setCurrentSection(prev => Math.max(Math.min(prev + dir, itemCount), 0))
+    }, scrollThrottleDuration)
 
     const handleScroll = (e: WheelEvent) => {
       e.preventDefault()
@@ -51,7 +51,7 @@ export const useCustomScroll = (containerRef: RefObject<HTMLElement>) => {
       container.removeEventListener('wheel', handleScroll)
     }
 
-  }, [containerRef])
+  }, [containerRef, itemCount])
 
   return {
     currentSection,
