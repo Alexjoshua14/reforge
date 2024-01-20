@@ -1,12 +1,3 @@
-import { m } from "framer-motion"
-
-export const heroPhrases = [
-  "Clever UI",
-  "Strong Art",
-  "Playful UI",
-  "Innovative Work",
-  ""
-]
 
 export const heroAdjectives = [
   "Clever",
