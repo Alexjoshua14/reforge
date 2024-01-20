@@ -4,6 +4,8 @@ import { FC, HTMLAttributes, useCallback, useEffect, useRef, useState } from 're
 import FullScreenSection from '../FullScreenSection'
 import { motion } from 'framer-motion'
 import { scrollDelay, zoomDuration } from '@/lib/constants/CarouselConstants'
+import { CarouselNavDotVariants, CarouselNavVariants } from '@/lib/variants/CarouselVariants'
+import CarouselControls from './CarouselControls'
 
 /**
  * Places each child in a full screen section
@@ -89,13 +91,7 @@ const Carousel: FC<CarouselProps> = ({ children }) => {
     <div
       ref={containerRef}
       className="h-screen w-screen overflow-scroll">
-      <div className="z-50 fixed top-1/2 -translate-y-1/2 right-10 flex flex-col gap-4 text-primary">
-        {Array.from({ length: childArray.length }).map((_, i) => (
-          <button className="w-5 h-5" key={`nav-${i}`} onClick={() => setCurrentSection(i)}>
-            {i}
-          </button>
-        ))}
-      </div>
+      <CarouselControls length={childArray.length} currentSection={currentSection} setCurrentSection={setCurrentSection} />
       <div className="min-h-screen h-fit w-screen bg-primary text-primary">
         {
           childArray.map((child, i) => (
