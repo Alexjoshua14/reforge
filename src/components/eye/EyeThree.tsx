@@ -45,10 +45,10 @@ const EyeThree: FC<EyeThreeProps> = ({ }) => {
     <Canvas style={{ width: 400, height: 400 }}>
       <motion.group>
         <motion.mesh
-
+          //TODO: width and height might be mixed up
           animate={{
-            rotateX: (cursorPosition.y - (window.innerHeight / 2)) / 360,
-            rotateY: (cursorPosition.x - (window.innerWidth / 2)) / 360,
+            rotateX: ((cursorPosition.y - (window.innerHeight / 2)) / (window.innerHeight)) * (Math.PI / 2),
+            rotateY: ((cursorPosition.x - (window.innerWidth / 2)) / window.innerWidth) * (Math.PI / 2),
           }}
           transition={{ duration: 1 }}
         >
