@@ -18,10 +18,9 @@ const FullScreenSection = React.forwardRef<HTMLDivElement, FullScreenSectionProp
             className)}
 
         ref={sectionRef}
-        initial={{ padding: 96 }}
-        animate={{ padding: curr && isInView ? 0 : 96 }}
-        transition={{ duration: .4 }}
 
+        animate={{ padding: curr && isInView ? 0 : [80, 40] }}
+        transition={{ duration: .4 }}
       >
         {children}
       </motion.div>
