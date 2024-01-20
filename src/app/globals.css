@@ -103,3 +103,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .font-hero {
+    @apply font-bold text-8xl;
+  }
+}
