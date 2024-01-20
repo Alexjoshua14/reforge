@@ -25,9 +25,7 @@ const FullScreenSection = React.forwardRef<HTMLDivElement, FullScreenSectionProp
         animate={curr && isInView ? 'active' : 'inactive'}
         transition={{ duration: zoomDuration / 1000, ease: 'easeIn' }}
       >
-
         {children}
-
       </motion.div>
 
     )

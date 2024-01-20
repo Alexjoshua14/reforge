@@ -24,7 +24,10 @@ const TextSection: FC<TextSectionProps> = ({ title, text, }) => {
   }, [isInView, setTheme])
 
   return (
-    <section ref={ref} className="light w-full h-full flex items-center justify-center bg-section text-primary">
+    <section
+      ref={ref}
+      className="relative light w-full h-full flex items-center justify-center bg-section text-primary overflow-hidden"
+    >
       <div className="z-10 relative max-w-4xl p-10">
         <div className="absolute top-0 left-0 -translate-y-full -translate-x-full text-xl">
           <h1>{title.toLowerCase()}_</h1>
@@ -33,13 +36,13 @@ const TextSection: FC<TextSectionProps> = ({ title, text, }) => {
           {text}
         </p>
       </div>
-      <div className="z-0 absolute max-w-screen top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+      <div className="z-0 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
         <motion.p
-          className="text-[400px] tracking-tighter whitespace-nowrap font-bold text-white"
+          className="text-[400px] tracking-[-0.07em] whitespace-nowrap font-bold text-white"
           initial={{ textShadow: '0px 0px 0px rgba(0,0,0,0.075)' }}
           whileInView={{ textShadow: '0px 0px 80px rgba(0,0,0,0.075)' }}
           transition={{ duration: 2.8, delay: 1 }}
-          viewport={{ amount: 'all' }}
+          viewport={{ amount: 0.5 }}
         >
           {title.toLowerCase()}
         </motion.p>
