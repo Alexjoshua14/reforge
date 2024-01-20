@@ -1,31 +1,16 @@
-import FullScreenSection from '@/components/FullScreenSection'
+
 import Carousel from '@/components/carousel/Carousel'
 import TextSection from '@/components/sections/TextSection'
 import CaseStudySection from '@/components/sections/CaseStudySection'
-import Image from 'next/image'
+
 import Hero from '@/components/sections/Hero'
+import NavBar from '@/components/NavBar'
 
 export default function Home() {
 
   return (
     <main className="flex h-screen w-screen overflow-hidden flex-col items-center justify-between">
-      <div className="z-50 fixed top-0 left-0 w-full h-20 flex justify-between items-center px-10 text-primary transition-colors">
-        <h1>reforge</h1>
-        <ul className="flex gap-4">
-          <li>
-            work.
-          </li>
-          <li>
-            services.
-          </li>
-          <li>
-            news.
-          </li>
-          <li className="text-red-700/80">
-            contact.
-          </li>
-        </ul>
-      </div>
+      <NavBar />
 
       <Carousel>
         <Hero />
