@@ -6,6 +6,8 @@ import { useTheme } from 'next-themes'
 import { heroAdjectives, heroNouns } from '@/lib/data/heroPhrases'
 import useClient from '@/lib/hooks/useClient'
 import EyeThree from '../eye/EyeThree'
+import { Model } from '../eye/eyeThree/Eye'
+import { Canvas } from '@react-three/fiber'
 
 interface HeroProps {
 
@@ -78,6 +80,7 @@ const Hero: FC<HeroProps> = ({ }) => {
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex">
         <EyeThree />
+
 
       </div>
     </section>

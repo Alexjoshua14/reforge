@@ -1,25 +1,18 @@
 import { FC, Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion-3d'
 import { Canvas, useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
+
 import { Vector3 } from 'three'
 import { MotionValue } from 'framer-motion'
+import { Model } from './eyeThree/Eye'
 
 interface EyeThreeProps {
 
 }
 
 const EyeThree: FC<EyeThreeProps> = ({ }) => {
-  const [colorMap, displacementMap, normalMap, roughnessMap] = useLoader(TextureLoader, [
-    '/eye/Concrete036_1K-JPG_Color.jpg',
-    '/eye/Concrete036_1K-JPG_Displacement.jpg',
-    '/eye/Concrete036_1K-JPG_NormalGL.jpg',
-    '/eye/Concrete036_1K-JPG_Roughness.jpg',
-  ])
-
   const [cursorPosition, setCursorPosition] = useState<Vector3>(new Vector3(window.innerWidth / 2, window.innerWidth / 2, 0))
   const lookAt = new MotionValue<Vector3>()
-  const testVector = new Vector3(0, 0, 0)
 
   useEffect(() => {
     const trackCursor = (e: MouseEvent) => {
@@ -43,33 +36,18 @@ const EyeThree: FC<EyeThreeProps> = ({ }) => {
 
   return (
     <Canvas style={{ width: 400, height: 400 }}>
-      <motion.group>
-        <motion.mesh
-          //TODO: width and height might be mixed up
-          animate={{
-            rotateX: ((cursorPosition.y - (window.innerHeight / 2)) / (window.innerHeight)) * (Math.PI / 2),
-            rotateY: ((cursorPosition.x - (window.innerWidth / 2)) / window.innerWidth) * (Math.PI / 2),
-          }}
-          transition={{ duration: 1 }}
-        >
-          <sphereGeometry args={[3, 100, 100, 0, 2.4]} />
-          <meshStandardMaterial map={colorMap} normalMap={normalMap} roughnessMap={roughnessMap} alphaMap={roughnessMap} />
-        </motion.mesh>
-        {/* <motion.mesh scale={.4} position={[0, 0, 3]}
-          animate={{
-            rotateX: (cursorPosition.y - (window.innerHeight / 2)) / 360,
-            rotateY: (cursorPosition.x - (window.innerWidth / 2)) / 360,
-            // rotateY: [0, Math.PI / 2, 0],
-            // rotateZ: [0, Math.PI / 2, 0],
-          }}
-        >
-          <sphereGeometry args={[2, 64, 64, 0, 2.4]} />
-          <meshBasicMaterial color={'white'} />
-        </motion.mesh> */}
-      </motion.group>
-
-      <motion.ambientLight />
-    </Canvas>
+      <motion.mesh
+        scale={2}
+        animate={{
+          rotateX: ((cursorPosition.y - (window.innerHeight / 2)) / (window.innerHeight)) * (Math.PI / 2),
+          rotateY: ((cursorPosition.x - (window.innerWidth / 2)) / window.innerWidth) * (Math.PI / 2),
+        }}
+        transition={{ duration: 1 }}
+      >
+        <Model />
+      </motion.mesh>
+      <motion.ambientLight intensity={1} />
+    </Canvas >
   )
 }
 
