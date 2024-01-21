@@ -50,7 +50,7 @@ const EyeThree: FC<EyeThreeProps> = ({ }) => {
         }}
         transition={{ duration: 1 }}
       >
-        <Model />
+        <Model animate={isInview} />
       </motion.mesh>
       <motion.ambientLight intensity={1} />
     </Canvas >

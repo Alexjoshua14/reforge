@@ -11,7 +11,7 @@ interface CarouselControlsProps {
 
 const CarouselControls: FC<CarouselControlsProps> = ({ length, currentSection, setCurrentSection }) => {
   return (
-    <div className="z-50 fixed top-1/2 -translate-y-1/2 right-10 flex flex-col gap-4 text-primary">
+    <div className="z-50 fixed top-1/2 -translate-y-1/2 right-24 flex flex-col gap-4 text-primary">
       {Array.from({ length }).map((_, i) => (
         <button
           className="w-5 h-5"

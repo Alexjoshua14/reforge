@@ -29,10 +29,10 @@ const TextSection: FC<TextSectionProps> = ({ title, text, }) => {
       className="relative light w-full h-full flex items-center justify-center bg-section text-primary overflow-hidden"
     >
       <div className="z-10 relative max-w-4xl p-10">
-        <div className="absolute top-0 left-0 -translate-y-full -translate-x-full text-xl">
+        <div className="absolute top-0 left-0 -translate-y-full -translate-x-full text-xl font-bold">
           <h1>{title.toLowerCase()}_</h1>
         </div>
-        <p className="text-4xl/[4rem] font-bold">
+        <p className="text-4xl/[1.5] font-bold">
           {text}
         </p>
       </div>
