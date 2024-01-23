@@ -8,6 +8,8 @@ import useClient from '@/lib/hooks/useClient'
 import EyeThree from '../eye/EyeThree'
 import { Model } from '../eye/eyeThree/Eye'
 import { Canvas } from '@react-three/fiber'
+import useSlideTheme from '@/lib/hooks/useSlideTheme'
+import { Theme } from '@/lib/types/ThemeType'
 
 interface HeroProps {
 
@@ -40,14 +42,8 @@ const Hero: FC<HeroProps> = ({ }) => {
   const heroIntervalID = useRef<NodeJS.Timeout | null>(null)
 
   const isInView = useInView(ref)
-  const { setTheme } = useTheme()
 
-  useEffect(() => {
-    if (isInView) {
-      console.log("Setting theme to dark")
-      setTheme('dark')
-    }
-  }, [isInView, setTheme])
+  useSlideTheme(Theme.Dark, ref)
 
   useEffect(() => {
     if (isInView) {

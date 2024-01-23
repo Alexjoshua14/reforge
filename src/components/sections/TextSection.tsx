@@ -4,6 +4,8 @@ import { useInView } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { FC, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import useSlideTheme from '@/lib/hooks/useSlideTheme'
+import { Theme } from '@/lib/types/ThemeType'
 
 interface TextSectionProps {
   title: string
@@ -13,15 +15,7 @@ interface TextSectionProps {
 const TextSection: FC<TextSectionProps> = ({ title, text, }) => {
   const ref = useRef<HTMLDivElement>(null)
 
-  const isInView = useInView(ref)
-  const { setTheme } = useTheme()
-
-  useEffect(() => {
-    if (isInView) {
-      console.log("Setting theme to light")
-      setTheme('light')
-    }
-  }, [isInView, setTheme])
+  useSlideTheme(Theme.Light, ref)
 
   return (
     <section

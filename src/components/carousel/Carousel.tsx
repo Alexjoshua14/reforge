@@ -15,7 +15,7 @@ import { useCustomScroll } from '@/lib/hooks/useCustomScroll'
  * TODO: Change scroll to transform
  */
 interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
-  // children: Iterable<React.ReactNode>
+
 }
 
 const Carousel: FC<CarouselProps> = ({ children }) => {
@@ -30,9 +30,6 @@ const Carousel: FC<CarouselProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const { currentSection, setCurrentSection } = useCustomScroll(containerRef, childArray.length)
-
-
-
 
   return (
     <div

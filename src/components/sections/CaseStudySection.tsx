@@ -1,5 +1,7 @@
 'use client'
 
+import useSlideTheme from '@/lib/hooks/useSlideTheme'
+import { Theme } from '@/lib/types/ThemeType'
 import { cn } from '@/lib/utils'
 import { useInView } from 'framer-motion'
 import { useTheme } from 'next-themes'
@@ -15,15 +17,7 @@ interface CaseStudySectionProps extends HTMLAttributes<HTMLElement> {
 const CaseStudy: FC<CaseStudySectionProps> = ({ title, text, link, className }) => {
   const ref = useRef<HTMLDivElement>(null)
 
-  const isInView = useInView(ref)
-  const { setTheme } = useTheme()
-
-  useEffect(() => {
-    if (isInView) {
-      console.log("Setting theme to case-study")
-      setTheme('case-study')
-    }
-  }, [isInView, setTheme])
+  useSlideTheme(Theme.CaseStudy, ref)
 
   return (
     <section ref={ref} className={cn(`h-full w-full pt-40 pb-20 px-10 flex items-center case-study bg-section text-white`, className)}>
