@@ -14,12 +14,12 @@ export const useCustomScroll = (containerRef: RefObject<HTMLElement>, itemCount:
 
     // Scroll to current section
     setTimeout(() => {
-
       container.scrollTo({
         top: (currentSection * container.clientHeight),
         behavior: "smooth",
       })
     }, scrollDelay)
+    
   }, [currentSection, containerRef])
 
   /** Intercept scroll events */
@@ -36,7 +36,10 @@ export const useCustomScroll = (containerRef: RefObject<HTMLElement>, itemCount:
       } else if (e.deltaY < 0) {
         dir = -1
       }
-      setCurrentSection(prev => Math.max(Math.min(prev + dir, itemCount), 0))
+
+      // Update current section and ensure we don't go out of bounds
+      // TEST: Ensure bounds are correct and respected
+      setCurrentSection(prev => Math.max(Math.min(prev + dir, itemCount - 1), 0))
     }, scrollThrottleDuration)
 
     const handleScroll = (e: WheelEvent) => {
