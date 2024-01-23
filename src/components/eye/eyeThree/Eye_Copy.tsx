@@ -4,10 +4,11 @@ Command: npx gltfjsx@6.2.16 ../../../../public/eye/Eye.glb --types
 */
 
 import * as THREE from 'three'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import { useLoader } from '@react-three/fiber'
+import { GroupProps, useLoader } from '@react-three/fiber'
+import { useInView } from 'framer-motion'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -29,9 +30,15 @@ interface GLTFAction extends THREE.AnimationClip {
 }
 type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>
 
-export function Model(props: JSX.IntrinsicElements['group']) {
+interface ModelProps extends GroupProps {
+  animate?: boolean
+}
+
+export function Model({ animate, ...props }: ModelProps) {
   const group = useRef<THREE.Group>(null)
-  const { nodes, materials } = useGLTF('/eye/Eye.glb') as GLTFResult
+  const eyeRef = useRef(null)
+  const { nodes, materials, animations } = useGLTF('/eye/Eye.glb') as GLTFResult
+  const { actions } = useAnimations(animations, group)
 
   const irisColorMap = useLoader(THREE.TextureLoader,
     '/eye/Iris_Material.png'
@@ -41,12 +48,27 @@ export function Model(props: JSX.IntrinsicElements['group']) {
     '/eye/Eyeball_Material.png'
   )
 
+  useEffect(() => {
+    if (animate) {
+      console.log("Playing animation: ", actions.PupilAction)
+      actions.PupilAction?.play()
+    } else {
+      console.log("Stopping animation: ", actions.PupilAction)
+      actions.PupilAction?.stop()
+    }
+
+  }, [actions.PupilAction, animate])
+
+
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
+      <group name="Scene" ref={eyeRef}>
         <pointLight name="Point" intensity={135878.533} decay={2} position={[0, 1.172, 7.38]} rotation={[-Math.PI / 2, 0, 0]} />
         <pointLight name="Point002" intensity={54351.413} decay={2} position={[-3.164, -14.643, -26.708]} rotation={[-Math.PI / 2, 0, 0]} scale={0.797} />
         <pointLight name="Point003" intensity={54351.413} decay={2} position={[3.005, 13.507, -26.708]} rotation={[-Math.PI / 2, 0, 0]} scale={0.797} />
+        <mesh name="Pupil" geometry={nodes.Pupil.geometry}>
+          <meshBasicMaterial map={eyeballColorMap} />
+        </mesh>
         <mesh name="Eyeball" geometry={nodes.Eyeball.geometry}>
           <meshBasicMaterial map={eyeballColorMap} />
         </mesh>
