@@ -13,7 +13,6 @@ interface EyeThreeProps {
 const EyeThree: FC<EyeThreeProps> = ({ }) => {
   const containerRef = useRef(null)
   const [cursorPosition, setCursorPosition] = useState<Vector3>(new Vector3(window.innerWidth / 2, window.innerWidth / 2, 0))
-  const lookAt = new MotionValue<Vector3>()
   const isInview = useInView(containerRef)
 
   useEffect(() => {
@@ -32,13 +31,6 @@ const EyeThree: FC<EyeThreeProps> = ({ }) => {
     }
   }, [isInview])
 
-  useEffect(() => {
-    // Obtain vector for center of page
-    const center = new Vector3(window.innerWidth / 2, window.innerHeight / 2, 0)
-
-    lookAt.set(cursorPosition.clone().sub(center).normalize())
-
-  })
 
   return (
     <Canvas style={{ width: 400, height: 400 }} ref={containerRef}>
