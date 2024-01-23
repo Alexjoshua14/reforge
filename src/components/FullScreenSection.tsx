@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import React, { FC, HTMLAttributes, useRef } from 'react'
+import React, { FC, HTMLAttributes, useEffect, useRef } from 'react'
 import { MotionProps, motion, useInView } from 'framer-motion'
 import { zoomDuration } from '@/lib/constants/CarouselConstants'
 import { SectionVariants } from '@/lib/variants/SectionVariants'
@@ -14,10 +14,9 @@ const FullScreenSection = React.forwardRef<HTMLDivElement, FullScreenSectionProp
     const isInView = useInView(sectionRef, { amount: 'all' })
 
     return (
-
       <motion.div
         className={
-          cn(`relative w-screen h-screen flex items-center justify-center overflow-hidden`,
+          cn(`relative w-screen h-screen py-5 px-10 flex items-center justify-center overflow-hidden`,
             className)}
         ref={sectionRef}
         variants={SectionVariants}
