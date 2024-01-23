@@ -59,7 +59,7 @@ const config = {
         accent: "hsl(var(--text-accent))",
       },
       backgroundColor: {
-        primary: "hsl(var(--background-primary))",
+        primary: "hsl(var(--background))",
         section: "hsl(var(--background-section))",
       },
       borderRadius: {
