@@ -11,11 +11,12 @@ export const useCustomScroll = (containerRef: RefObject<HTMLElement>, itemCount:
     if (!containerRef.current)
       return
     const container = containerRef.current
+    const scrollIncrement = container.offsetHeight
 
     // Scroll to current section
     setTimeout(() => {
       container.scrollTo({
-        top: (currentSection * container.clientHeight),
+        top: (currentSection * scrollIncrement),
         behavior: "smooth",
       })
     }, scrollDelay)
