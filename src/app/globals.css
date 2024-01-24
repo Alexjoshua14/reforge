@@ -22,8 +22,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 235 62% 73%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -75,24 +74,24 @@
     --ring: 212.7 26.8% 83.9%;
   } */
 
-  .light {
-    --background: 0 64% 50%;
-    --background-secondary: 0 0% 10%;
-    --background-section: 0 0% 100%;
+  .dark {
+    --background: 17 21% 94%;
+    --background-section: 237 61% 7%;
 
-    --text-primary: 0 0% 10%;
-    --text-secondary: 0 0% 10%;
-    --text-accent: 0 64% 50%;
+    --text-primary: 17 21% 94%;
+    --text-accent: 156 23% 34%;
+    --text-bg-blend: 237 61% 7%;
+    --text-shadow: hsla(17, 21%, 94%, 0.075);
   }
 
-  .dark {
-    --background: 0 0% 10%;
-    --background-secondary: 0 0% 100%;
-    --background-section: 0 0% 10%;
+  .light {
+    --background: 237 61% 7%;
+    --background-section: 17 21% 94%;
 
-    --text-primary: 0 0% 100%;
-    --text-secondary: 0 0% 100%;
-    --text-accent: 0 64% 50%;
+    --text-primary: 237 61% 7%;
+    --text-bg-blend: 17 21% 94%;
+    --text-accent: 156 23% 34%;
+    --text-shadow: hsla(237, 61%, 7%, 0.075);
   }
 
   .case-study {

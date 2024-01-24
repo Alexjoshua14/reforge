@@ -57,6 +57,7 @@ const config = {
         primary: "hsl(var(--text-primary))",
         secondary: "hsl(var(--text-secondary))",
         accent: "hsl(var(--text-accent))",
+        'bg-blend': "hsl(var(--text-bg-blend))",
       },
       backgroundColor: {
         primary: "hsl(var(--background))",
