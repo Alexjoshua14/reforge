@@ -34,7 +34,7 @@ const Carousel: FC<CarouselProps> = ({ children }) => {
   return (
     <div
       ref={containerRef}
-      className="h-screen w-screen overflow-scroll">
+      className="h-screen w-screen overflow-y-scroll overflow-x-hidden">
       <CarouselControls length={childArray.length} currentSection={currentSection} setCurrentSection={setCurrentSection} />
       {/* <div className="h-screen w-screen" /> */}
       <div className="min-h-screen h-fit w-screen text-primary bg-primary transition-colors duration-700 ease-in-out">
