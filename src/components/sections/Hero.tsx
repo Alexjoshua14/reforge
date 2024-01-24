@@ -35,7 +35,7 @@ function* generateHeroPhrases() {
   }
 }
 
-const Hero: FC<HeroProps> = ({ }) => {
+const Hero: FC<HeroProps> = ({ theme = Theme.Dark }) => {
   const heroPhraseGenerator = generateHeroPhrases()
   const ref = useRef<HTMLDivElement>(null)
   const [heroPhrase, setHeroPhrase] = useState<string>(heroPhraseGenerator.next().value ?? "")
@@ -44,7 +44,7 @@ const Hero: FC<HeroProps> = ({ }) => {
 
   const isInView = useInView(ref)
 
-  useSlideTheme(Theme.Light, ref)
+  useSlideTheme(theme, ref)
 
   useEffect(() => {
     if (isInView) {
@@ -66,7 +66,7 @@ const Hero: FC<HeroProps> = ({ }) => {
   return (
     <section
       ref={ref}
-      className="relative w-full h-full flex items-center justify-center text-white"
+      className={`relative w-full h-full flex items-center justify-center text-white ${theme}`}
       style={{ background: 'radial-gradient(black 40%, hsl(var(--accent)))' }}
     >
       <div className="z-0 absolute w-full h-full flex items-center justify-center bg-black/60 backdrop-blur-3xl" />

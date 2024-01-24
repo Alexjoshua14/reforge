@@ -25,7 +25,7 @@ const TextSection: FC<TextSectionProps> = ({ title, text, theme = Theme.Light })
   return (
     <section
       ref={ref}
-      className="relative w-full h-full flex items-center justify-center bg-section text-primary overflow-hidden"
+      className={`relative w-full h-full flex items-center justify-center bg-section text-primary overflow-hidden ${theme}`}
     >
       <div className="z-10 relative max-w-4xl p-10">
         <div className="absolute top-0 left-0 -translate-y-full -translate-x-full text-xl font-bold">

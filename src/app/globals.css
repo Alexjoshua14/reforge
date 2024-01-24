@@ -95,13 +95,13 @@
   }
 
   .case-study {
-    --background: 0 0% 10%;
+    --background: 237 61% 7%;
     --background-secondary: 0 0% 100%;
-    --background-section: 0 64% 50%;
+    --background-section: 156 23% 34%;
 
     --text-primary: 0 0% 100%;
     --text-secondary: 0 0% 100%;
-    --text-accent: 0 0% 10%;
+    --text-accent: 237 61% 7%;
   }
 }
 
