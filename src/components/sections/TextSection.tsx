@@ -6,21 +6,26 @@ import { FC, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import useSlideTheme from '@/lib/hooks/useSlideTheme'
 import { Theme } from '@/lib/types/ThemeType'
+import { SectionProps } from '@/lib/types/SectionProps'
 
-interface TextSectionProps {
+interface TextSectionProps extends SectionProps {
   title: string
   text: string
 }
 
-const TextSection: FC<TextSectionProps> = ({ title, text, }) => {
+const TextSection: FC<TextSectionProps> = ({ title, text, theme = Theme.Light }) => {
   const ref = useRef<HTMLDivElement>(null)
 
-  useSlideTheme(Theme.Light, ref)
+  useSlideTheme(theme, ref)
+
+  useEffect(() => {
+    console.log(`Theme: ${theme}`)
+  }, [theme])
 
   return (
     <section
       ref={ref}
-      className="relative light w-full h-full flex items-center justify-center bg-section text-primary overflow-hidden"
+      className="relative w-full h-full flex items-center justify-center bg-section text-primary overflow-hidden"
     >
       <div className="z-10 relative max-w-4xl p-10">
         <div className="absolute top-0 left-0 -translate-y-full -translate-x-full text-xl font-bold">
@@ -32,9 +37,9 @@ const TextSection: FC<TextSectionProps> = ({ title, text, }) => {
       </div>
       <div className="z-0 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
         <motion.p
-          className="text-[400px] tracking-[-0.07em] whitespace-nowrap font-bold text-white"
-          initial={{ textShadow: '0px 0px 0px rgba(0,0,0,0.075)' }}
-          whileInView={{ textShadow: '0px 0px 80px rgba(0,0,0,0.075)' }}
+          className="text-[400px] tracking-[-0.07em] whitespace-nowrap font-bold text-bg-blend"
+          initial={{ textShadow: '0px 0px 0px var(--text-shadow)' }}
+          whileInView={{ textShadow: '0px 0px 80px var(--text-shadow)' }}
           transition={{ duration: 2.8, delay: 1 }}
           viewport={{ amount: 0.5 }}
         >

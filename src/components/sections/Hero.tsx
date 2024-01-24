@@ -10,8 +10,9 @@ import { Model } from '../eye/eyeThree/Eye'
 import { Canvas } from '@react-three/fiber'
 import useSlideTheme from '@/lib/hooks/useSlideTheme'
 import { Theme } from '@/lib/types/ThemeType'
+import { SectionProps } from '@/lib/types/SectionProps'
 
-interface HeroProps {
+interface HeroProps extends SectionProps {
 
 }
 
@@ -43,7 +44,7 @@ const Hero: FC<HeroProps> = ({ }) => {
 
   const isInView = useInView(ref)
 
-  useSlideTheme(Theme.Dark, ref)
+  useSlideTheme(Theme.Light, ref)
 
   useEffect(() => {
     if (isInView) {
@@ -63,7 +64,12 @@ const Hero: FC<HeroProps> = ({ }) => {
   }, [heroPhraseGenerator, isInView])
 
   return (
-    <section ref={ref} className="w-full h-full flex items-center justify-center bg-black text-white">
+    <section
+      ref={ref}
+      className="relative w-full h-full flex items-center justify-center text-white"
+      style={{ background: 'radial-gradient(black 40%, hsl(var(--accent)))' }}
+    >
+      <div className="z-0 absolute w-full h-full flex items-center justify-center bg-black/60 backdrop-blur-3xl" />
       <div className="z-10 absolute left-1/2 xl:left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/2 xl:-translate-x-0 w-fit">
         <div className="absolute top-0 left-1/2 xl:left-0 -translate-y-full -translate-x-1/2 xl:-translate-x-full text-xl">
           <h1>we create_</h1>
@@ -77,6 +83,7 @@ const Hero: FC<HeroProps> = ({ }) => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex">
         <EyeThree />
       </div>
+
     </section>
   )
 }
