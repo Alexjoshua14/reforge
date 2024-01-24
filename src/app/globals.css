@@ -118,4 +118,8 @@
   .font-hero {
     @apply font-bold text-8xl;
   }
+
+  .page-x-gutter {
+    @apply px-20;
+  }
 }

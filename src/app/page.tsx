@@ -6,6 +6,7 @@ import CaseStudySection from '@/components/sections/CaseStudySection'
 import Hero from '@/components/sections/Hero'
 import NavBar from '@/components/NavBar'
 import { Theme } from '@/lib/types/ThemeType'
+import { case_study_1, case_study_2, case_study_3 } from '@/lib/data/caseStudies'
 
 export default function Home() {
 
@@ -15,24 +16,24 @@ export default function Home() {
       />
 
       <Carousel>
+        <TextSection
+          title="we are"
+          text="A team of designers, developers, inventors, strategists, artists and storytellers. In 2001 we united as a New York-based strategic design studio, employing our breadth of expertise to create exceptional digital experiences."
+        />
         <Hero />
         <TextSection
           title="we are"
           text="A team of designers, developers, inventors, strategists, artists and storytellers. In 2001 we united as a New York-based strategic design studio, employing our breadth of expertise to create exceptional digital experiences."
         />
         <CaseStudySection
-          title="happy moves"
-          text="A fitness tracking app that creates happiness through movement."
-          link="/"
+          {...case_study_1}
         />
         <TextSection
           title="we believe"
           text="That behind every successful design is solid strategic thinking. We put a creative director and senior strategist on every project, to ensure results that are both alluring and easy to use. We’re problem-solvers, first and foremost, and always up for a challenge."
         />
         <CaseStudySection
-          title="happy moves"
-          text="A fitness tracking app that creates happiness through movement."
-          link="/"
+          {...case_study_2}
         />
         <TextSection
           title="our impact"
@@ -40,9 +41,7 @@ export default function Home() {
           theme={Theme.Dark}
         />
         <CaseStudySection
-          title="happy moves"
-          text="A fitness tracking app that creates happiness through movement."
-          link="/"
+          {...case_study_3}
         />
         <TextSection
           title="our clients"
