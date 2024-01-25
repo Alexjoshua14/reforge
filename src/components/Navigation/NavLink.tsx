@@ -4,15 +4,34 @@ import { FC, LiHTMLAttributes } from 'react'
 interface NavLinkProps extends LiHTMLAttributes<HTMLLIElement> {
   text: string
   link: string
-  variation?: 'accent'
+  variation?: 'accent' | 'mobile'
 }
 
+/**
+ * 
+ * TODO: Clean up variations
+ */
 const NavLink: FC<NavLinkProps> = ({ text, link, variation, ...props }) => {
   return (
     <li {...props}>
-      <Link href={link} className={`flex flex-col group ${variation === 'accent' ? 'text-accent' : 'text-primary'}`}>
+      <Link
+        href={link}
+        className={`
+          w-fit flex flex-col group 
+          ${variation === 'accent' ? 'text-accent'
+            : variation === 'mobile' ? 'text-white'
+              : 'text-primary'}
+          `}
+      >
         {text + '.'}
-        <span className={`h-[1px] w-0 group-hover:w-full opacity-0 group-hover:opacity-100 origin-left transition-all duration-500 ${variation === 'accent' ? 'bg-accent' : 'bg-primary'}`} />
+        <span
+          className={`
+            h-[1px] w-0 opacity-0
+            group-hover:w-full group-hover:opacity-100 origin-left transition-all duration-300 
+            ${variation === 'accent' ? 'bg-accent'
+              : 'bg-primary'}
+            `}
+        />
       </Link>
     </li>
   )
