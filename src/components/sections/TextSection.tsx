@@ -27,17 +27,17 @@ const TextSection: FC<TextSectionProps> = ({ title, text, theme = Theme.Light })
       ref={ref}
       className={`relative w-full h-full flex items-center justify-center bg-section text-primary overflow-hidden ${theme}`}
     >
-      <div className="z-10 relative max-w-4xl p-10">
-        <div className="absolute top-0 left-0 -translate-y-full -translate-x-full text-xl font-bold">
+      <div className="z-10 relative sm:max-w-sm xl:max-w-4xl p-2">
+        <div className="absolute top-0 left-0 -translate-y-full -translate-x-full text-tagline">
           <h1>{title.toLowerCase()}_</h1>
         </div>
-        <p className="text-4xl/[1.5] font-bold">
+        <p className="text-holder font-bold">
           {text}
         </p>
       </div>
       <div className="z-0 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
         <motion.p
-          className="text-[400px] tracking-[-0.07em] whitespace-nowrap font-bold text-bg-blend"
+          className="text-bg-blend text-bg"
           initial={{ textShadow: '0px 0px 0px var(--text-shadow)' }}
           whileInView={{ textShadow: '0px 0px 80px var(--text-shadow)' }}
           transition={{ duration: 2.8, delay: 1 }}

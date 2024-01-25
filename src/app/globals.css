@@ -96,7 +96,6 @@
 
   .case-study {
     --background: 237 61% 7%;
-    --background-secondary: 0 0% 100%;
     --background-section: 156 23% 34%;
 
     --text-primary: 0 0% 100%;
@@ -115,8 +114,30 @@
 }
 
 @layer utilities {
+  .animate-text-size-change {
+    @apply duration-1000;
+    transition-property: font-size, line-height;
+  }
+
+  .animate-bg-text-change {
+    @apply animate-text-size-change delay-1000;
+  }
+
   .font-hero {
     @apply font-bold text-8xl;
+  }
+
+  .text-tagline {
+    @apply text-sm xl:text-xl font-bold animate-text-size-change;
+    transition-property: font-size, line-height, transform;
+  }
+
+  .text-holder {
+    @apply leading-relaxed sm:leading-loose text-xl xl:text-4xl/[1.5] animate-text-size-change;
+  }
+
+  .text-bg {
+    @apply text-[268px] xl:text-[400px] tracking-[-0.07em] whitespace-nowrap font-bold animate-bg-text-change;
   }
 
   .page-x-gutter {
