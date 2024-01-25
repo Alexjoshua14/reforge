@@ -16,10 +16,6 @@ export default function Home() {
       />
 
       <Carousel>
-        <TextSection
-          title="we are"
-          text="A team of designers, developers, inventors, strategists, artists and storytellers. In 2001 we united as a New York-based strategic design studio, employing our breadth of expertise to create exceptional digital experiences."
-        />
         <Hero />
         <TextSection
           title="we are"
