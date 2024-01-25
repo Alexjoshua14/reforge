@@ -62,6 +62,7 @@ const config = {
       backgroundColor: {
         primary: "hsl(var(--background))",
         section: "hsl(var(--background-section))",
+        accent: "hsl(var(--background-accent))",
       },
       borderRadius: {
         lg: "var(--radius)",

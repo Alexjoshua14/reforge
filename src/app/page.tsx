@@ -4,7 +4,7 @@ import TextSection from '@/components/sections/TextSection'
 import CaseStudySection from '@/components/sections/CaseStudySection'
 
 import Hero from '@/components/sections/Hero'
-import NavBar from '@/components/NavBar'
+import NavBar from '@/components/Navigation/NavBar'
 import { Theme } from '@/lib/types/ThemeType'
 import { case_study_1, case_study_2, case_study_3 } from '@/lib/data/caseStudies'
 
