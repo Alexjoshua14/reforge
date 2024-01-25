@@ -12,7 +12,7 @@ export const CarouselNavDotVariants = {
     backgroundColor: 'hsl(var(--background-section))',
   },
   inactive: {
-    backgroundColor: 'hsl(var(--background-secondary))',
+    backgroundColor: 'hsl(var(--text-primary))',
   }
 
 }
