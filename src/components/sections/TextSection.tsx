@@ -22,6 +22,16 @@ const TextSection: FC<TextSectionProps> = ({ title, text, theme = Theme.Light })
     console.log(`Theme: ${theme}`)
   }, [theme])
 
+  // TODO: Add enter and exit animations
+  // Likely via variations so that we can change animation
+  // depending on scroll direction
+  // Title and text should move up on scroll down and down on scroll up
+  // They should enter from the opposite direction scroll comes from
+  // i.e., scrolling down into the section should result in elements coming from bottom
+  // scrolling up into the section should result in elements coming from top
+  // Title should move a greater distance over the same amount of time as text
+  // Likely some easing effect
+
   return (
     <section
       ref={ref}
