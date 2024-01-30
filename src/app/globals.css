@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* https://coolors.co/ef7a85-f3eeec-426a5a-8f97e5-07081d */
+
 @layer base {
   :root {
     /* --background: 0 0% 100%; */
