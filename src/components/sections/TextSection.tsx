@@ -41,7 +41,7 @@ const TextSection: FC<TextSectionProps> = ({ title, text, theme = Theme.Light })
           initial={{ textShadow: '0px 0px 0px var(--text-shadow)' }}
           whileInView={{ textShadow: '0px 0px 80px var(--text-shadow)' }}
           transition={{ duration: 2.8, delay: 1 }}
-          viewport={{ amount: 0.5 }}
+          viewport={{ amount: 0.5, once: false }}
         >
           {title.toLowerCase()}
         </motion.p>
