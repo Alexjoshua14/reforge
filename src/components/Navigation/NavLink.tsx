@@ -17,7 +17,7 @@ const NavLink: FC<NavLinkProps> = ({ text, link, variation, ...props }) => {
       <Link
         href={link}
         className={`
-          w-fit flex flex-col group 
+          w-fit flex flex-col group cursor-pointer
           ${variation === 'accent' ? 'text-accent'
             : variation === 'mobile' ? 'text-white'
               : 'text-primary'}
