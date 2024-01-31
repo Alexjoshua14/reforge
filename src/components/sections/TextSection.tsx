@@ -38,24 +38,44 @@ const TextSection: FC<TextSectionProps> = ({ title, text, theme = Theme.Light })
       className={`relative w-full h-full page-x-gutter flex items-center justify-center bg-section text-primary overflow-hidden ${theme}`}
     >
       <div className="z-10 relative sm:max-w-sm xl:max-w-4xl p-2">
-        <div className="absolute top-0 left-0 -translate-y-full -translate-x-full text-tagline">
-          <h1>{title.toLowerCase()}_</h1>
-        </div>
-        <p className="text-holder font-bold">
-          {text}
-        </p>
+        <motion.div
+          className="absolute top-0 left-0 -translate-y-full -translate-x-full"
+          initial={{ y: -200 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 1.4, ease: 'circOut' }}
+        >
+          <h1 className="text-tagline">{title.toLowerCase()}_</h1>
+        </motion.div>
+        <motion.div
+          initial={{ y: '-200px' }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 0.6, ease: 'circOut' }}
+        >
+          <p className="text-holder font-bold">
+            {text}
+          </p>
+        </motion.div>
       </div>
-      <div className="z-0 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-        <motion.p
+      <motion.div className="z-0 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+        initial={{ textShadow: '0px 0px 0px var(--text-shadow)' }}
+        whileInView={{
+          textShadow:
+            [
+              '0px 0px 0px var(--text-shadow)',
+              '0px 0px 80px var(--text-shadow)',
+              '0px 0px 0px var(--text-shadow)',
+              '0px 0px 80px var(--text-shadow)'
+            ]
+        }}
+        transition={{ duration: 2.8 }}
+        viewport={{ amount: .5, once: false }}
+      >
+        <p
           className="text-bg-blend text-bg"
-          initial={{ textShadow: '0px 0px 0px var(--text-shadow)' }}
-          whileInView={{ textShadow: '0px 0px 80px var(--text-shadow)' }}
-          transition={{ duration: 2.8, delay: 1 }}
-          viewport={{ amount: 0.5, once: false }}
         >
           {title.toLowerCase()}
-        </motion.p>
-      </div>
+        </p>
+      </motion.div>
     </section>
   )
 }
