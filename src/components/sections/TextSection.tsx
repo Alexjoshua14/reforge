@@ -39,7 +39,7 @@ const TextSection: FC<TextSectionProps> = ({ title, text, theme = Theme.Light })
     >
       <div className="z-10 relative sm:max-w-sm xl:max-w-4xl p-2">
         <motion.div
-          className="absolute top-0 left-0 -translate-y-full -translate-x-full"
+          className="absolute -top-4 left-0 -translate-y-full -translate-x-full"
           initial={{ y: -200 }}
           whileInView={{ y: 0 }}
           transition={{ duration: 1.4, ease: 'circOut' }}
